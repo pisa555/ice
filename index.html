@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Year 2 winter decision tool for Team 6" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Team 6 | Year 2 Decision Tool</title>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Pork & Garlic Ice Cream Co.</p>
+          <h1>Year 2 winter decision tool</h1>
+          <p class="hero-copy">Compare two plans before the market allocation is known.</p>
+        </div>
+        <div class="team-badge">Team 6</div>
+      </header>
+
+      <section class="notice" aria-labelledby="photo-data-title">
+        <div>
+          <p class="section-kicker">Working method</p>
+          <h2 id="photo-data-title">Start with your actual Year 1 autumn position</h2>
+        </div>
+        <p>The fields below are deliberately blank. Enter Team 6's real Year 1 autumn totals before choosing a plan. The supplied winter note appears only in the validation example at the bottom of the page.</p>
+      </section>
+
+      <section class="layout-grid" aria-label="Model inputs">
+        <article class="panel baseline-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">Starting point</p>
+              <h2>Position after Year 1</h2>
+            </div>
+            <span class="status-chip warning">Enter actuals</span>
+          </div>
+          <div class="fields two-columns">
+            <label>Closing cash <span>Sh</span><input id="openingCash" type="number" placeholder="Enter after Year 1 autumn" step="0.01" /></label>
+            <label>Year 1 annual profit <span>Sh</span><input id="year1Profit" type="number" placeholder="Enter annual result" step="0.01" /></label>
+            <label>Unused tax losses <span>Sh</span><input id="lossPool" type="number" placeholder="0 if none" step="0.01" /></label>
+            <label>Existing loan balance <span>Sh</span><input id="existingDebt" type="number" placeholder="0 if none" step="0.01" /></label>
+            <label>Existing principal paid now <span>Sh</span><input id="existingPrincipal" type="number" placeholder="0 if none" step="0.01" /></label>
+            <label>Existing loan interest rate <span>% / season</span><input id="existingRate" type="number" placeholder="Enter rate" step="0.1" /></label>
+          </div>
+          <div class="machine-row">
+            <strong>Machine schedule</strong>
+            <span>Enter the cost, remaining life, capacity and maintenance for the machines still owned after Year 1.</span>
+          </div>
+          <div class="fields two-columns compact-fields">
+            <label>Machine cost basis <span>Sh</span><input id="ownedMachineCost" type="number" placeholder="Enter total cost basis" step="1" /></label>
+            <label>Remaining depreciation seasons<input id="remainingLife" type="number" placeholder="Enter remaining seasons" min="1" step="1" /></label>
+            <label>Machine capacity <span>units</span><input id="machineCapacity" type="number" placeholder="Enter total capacity" step="1000" /></label>
+            <label>Maintenance <span>Sh / season</span><input id="machineMaintenance" type="number" placeholder="Enter total maintenance" step="1" /></label>
+          </div>
+        </article>
+
+        <article class="panel rules-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">Editable estimates</p>
+              <h2>Year 2 winter assumptions</h2>
+            </div>
+            <span class="status-chip neutral">Confirm in class</span>
+          </div>
+          <p class="panel-intro">These are Year 1 values used only as working estimates until the trainer provides Year 2 rules.</p>
+          <div class="fields two-columns">
+            <label>Sales price <span>Sh / unit</span><input id="unitPrice" type="number" value="2" step="0.01" /></label>
+            <label>Milk price <span>Sh / ton</span><input id="milkPrice" type="number" value="20000" step="1" /></label>
+            <label>Tax rate <span>%</span><input id="taxRate" type="number" value="10" step="0.1" /></label>
+            <label>Bonus rate <span>% of gross profit</span><input id="bonusRate" type="number" value="5" step="0.1" /></label>
+            <label>New-loan interest rate <span>% / season</span><input id="newLoanRate" type="number" value="10" step="0.1" /></label>
+            <label>New-machine useful life <span>seasons</span><input id="newMachineLife" type="number" value="8" min="1" step="1" /></label>
+          </div>
+          <div class="forecast-box">
+            <span>Known Year 2 winter forecast</span>
+            <strong>410,000 units</strong>
+            <small>This is a forecast, not guaranteed sales.</small>
+          </div>
+        </article>
+      </section>
+
+      <section class="comparison-header">
+        <div>
+          <p class="section-kicker">Decision comparison</p>
+          <h2>Two possible winter plans</h2>
+        </div>
+        <p>Change any value. The results update instantly.</p>
+      </section>
+
+      <section id="scenarioGrid" class="scenario-grid" aria-label="Scenario comparison"></section>
+
+      <section class="recommendation-panel" aria-labelledby="recommendation-title">
+        <div>
+          <p class="section-kicker">Recommendation</p>
+          <h2 id="recommendation-title">Choose a plan after checking allocation risk</h2>
+        </div>
+        <div id="recommendationText" class="recommendation-copy"></div>
+      </section>
+
+      <section class="verification-panel" aria-labelledby="verification-title">
+        <div>
+          <p class="section-kicker">Required assignment check</p>
+          <h2 id="verification-title">Year 1 winter validation</h2>
+        </div>
+        <p>This is an example, not the starting position for Year 2: 50,000 sold, 2.5 tons of milk, Machine 1 and Premise D. Enter the two matching classroom results to show whether the model reconciles.</p>
+        <div class="fields two-columns validation-inputs">
+          <label>Classroom net profit <span>Sh</span><input id="classroomNetProfit" type="number" placeholder="Enter class result" step="0.01" /></label>
+          <label>Classroom closing cash <span>Sh</span><input id="classroomClosingCash" type="number" placeholder="Enter class result" step="0.01" /></label>
+        </div>
+        <div id="year1Check" class="year1-result"></div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
